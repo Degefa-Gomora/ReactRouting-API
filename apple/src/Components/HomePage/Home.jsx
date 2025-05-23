@@ -6,7 +6,7 @@ import SectionThree from "./../SectionThree/SectionThree.jsx";
 import SectionFour from "./../SectionFour/SectionFour.jsx";
 import SectionFive from "./../SectionFive/SectionFive.jsx";
 import SectionSix from "./../SectionSix/SectionSix.jsx";
-// import YouTube from "./../Youtube/YouTube.jsx";
+import YouTube from "./../Youtube/YouTube.jsx";
 import RatingBlock from "./../RatingBlock/RatingBlock.jsx";
 
 function Home() {
@@ -19,7 +19,7 @@ function Home() {
       <SectionFour />
       <SectionFive />
       <SectionSix />
-      {/* <YouTube /> */}
+      <YouTube />
       <RatingBlock />
     </>
   );
