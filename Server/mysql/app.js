@@ -183,24 +183,6 @@ app.get("/iphones", (req, res) => {
   );
 });
 
-// app.get("/iphones/product_id", (req, res) => {
-//   const pid = req.params.product_id; // Get product_id from query parameters
-//    console.log(pid);
-
-//   connection.query(
-//     `SELECT * FROM Products
-//     INNER JOIN ProductDescription ON Products.product_id = ProductDescription.product_id
-//     INNER JOIN ProductPrice ON Products.product_id = ProductPrice.product_id where Products.product_id = ${pid}`,
-//     (err, rows) => {
-//       if (err) {
-//         console.error("Error retrieving products:", err);
-//         return res.status(500).send("Error retrieving products");
-//       }
-//       res.json({ products: rows });
-//     }
-//   );
-// });
-
 // Get all user names
 app.get("/users", (req, res) => {
   connection.query(
