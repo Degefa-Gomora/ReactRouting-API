@@ -1,27 +1,24 @@
-const mysql = require("mysql2");//Connects Node.js to MySQL and executes arrayQuerries.
-const express = require("express");//A framework for handling HTTP requests.
-const cors = require("cors");//Allows API access from different domains.
-const bodyParser = require("body-parser");//Parses incoming request bodies (JSON & form data).
+require("dotenv").config();
+const mysql = require("mysql2"); //Connects Node.js to MySQL and executes arrayQuerries.
+const express = require("express"); //A framework for handling HTTP requests.
+const cors = require("cors"); //Allows API access from different domains.
+const bodyParser = require("body-parser"); //Parses incoming request bodies (JSON & form data).
 
-const app = express();//
+const app = express(); //
 const corsOptions = {
-  origin: [
-    "http://localhost:5173/iphone",
-    "https://www.apple.com",
-  ],
+  origin: ["http://localhost:5173/iphone", "https://www.apple.com"],
 };
 
 app.use(cors(corsOptions)); // Pass the options to cors()
-app.use(cors());//if you wanna give access for public
-app.use(bodyParser.json());//
-app.use(bodyParser.urlencoded({ extended: true }));//
+app.use(bodyParser.json()); //
+app.use(bodyParser.urlencoded({ extended: true })); //
 
 // Create a Single MySQL Connection
 const connection = mysql.createConnection({
-  user: "abdi",
-  password: "abdi@1234",
-  host: "localhost",
-  database: "singleDB",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
 });
 
 // Connect to MySQL
@@ -191,8 +188,8 @@ app.get("/iphones", (req, res) => {
 //    console.log(pid);
 
 //   connection.query(
-//     `SELECT * FROM Products 
-//     INNER JOIN ProductDescription ON Products.product_id = ProductDescription.product_id 
+//     `SELECT * FROM Products
+//     INNER JOIN ProductDescription ON Products.product_id = ProductDescription.product_id
 //     INNER JOIN ProductPrice ON Products.product_id = ProductPrice.product_id where Products.product_id = ${pid}`,
 //     (err, rows) => {
 //       if (err) {
@@ -219,11 +216,6 @@ app.get("/users", (req, res) => {
 });
 
 // Start Server
-app.listen(3001, () => {
-  console.log("Server running on port 3001");
+app.listen(process.env.PORT || 3001, () => {
+  console.log(`Server running on port ${process.env.PORT || 3001}`);
 });
-
-
-
-
-
