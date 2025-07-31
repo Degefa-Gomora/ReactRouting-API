@@ -19,8 +19,8 @@ function Home() {
       <SectionFour />
       <SectionFive />
       <SectionSix />
-      <YouTube />
-      <RatingBlock />
+      {/* <YouTube /> */}
+      {/* <RatingBlock /> */}
     </>
   );
 }

@@ -11,7 +11,7 @@ const Youtube = () => {
 
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setYouTubeVideos(data.items))
+      .then((data) => setYouTubeVideos(data.items || [])) // Prevents undefined
       .catch((err) => console.error("Failed to fetch videos:", err));
   }, [sortOption]);
 
@@ -37,7 +37,7 @@ const Youtube = () => {
               <option value="viewcount">Most Viewed</option>
             </select>
           </div>
-          {youTubeVideos.map((video, i) => {
+          {(youTubeVideos || []).map((video, i) => {
             const vidId = video?.id?.videoId;
             const vidLink = `https://www.youtube.com/watch?v=${vidId}`;
             const snippet = video?.snippet;

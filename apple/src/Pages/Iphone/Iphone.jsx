@@ -12,14 +12,14 @@ const Iphone = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        setProducts(data.products);
+        setProducts(data.products || []); // <-- prevents undefined
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
   return (
     <section className="internal-page-wrapper top-100">
       <div className="container">
-        {products.map((product, index) => {
+        {(products || []).map((product, index) => {
           const {
             product_name,
             product_brief_description,
